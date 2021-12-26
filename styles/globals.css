@@ -153,9 +153,8 @@ button.btn-google {
   color: var(--color-text);
 }
 
-.btn-google img {
-  width: 30px;
-  margin-right: 10px;
+.btn-signin {
+  margin-right: 10px !important;
 }
 
 button.btn-logo {

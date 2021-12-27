@@ -1,8 +1,7 @@
-import { FirebaseOptions } from '@firebase/app'
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebase/compat/firestore'
-import 'firebase/compat/storage'
+import { FirebaseOptions, initializeApp } from '@firebase/app'
+import {getAuth, GoogleAuthProvider} from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 
 const firebaseConfig: FirebaseOptions = {
   apiKey: "AIzaSyBGSoAnm0RGK_Ub9AUuSMLeZRL3esBEUn8",
@@ -14,12 +13,10 @@ const firebaseConfig: FirebaseOptions = {
   measurementId: "G-VMVCN37YFZ"
 }
 
-if(!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig)
-}
+const firebaseApp = initializeApp(firebaseConfig)
 
-export const auth = firebase.auth()
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
+export const auth = getAuth(firebaseApp)
+export const googleAuthProvider = new GoogleAuthProvider()
 
-export const firestore = firebase.firestore()
-export const storage = firebase.storage()
+export const firestore = getFirestore(firebaseApp)
+export const storage = getStorage(firebaseApp)
